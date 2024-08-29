@@ -1,34 +1,42 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Dashboard from './components/Dashboard';
 import TransactionList from './components/TransactionList';
 import AddTransactionForm from './components/AddTransactionForm';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import NotFoundPage from './pages/NotFoundPage';
+import Footer from './components/Footer';
 
 const App = () => {
   const [transactions, setTransactions] = useState([]);
 
   const addTransaction = (transaction) => {
-    setTransactions([transaction, ...transactions]);
+    setTransactions([...transactions, transaction]);
   };
 
-  const totalIncome = transactions
-    .filter((transaction) => transaction.amount > 0)
-    .reduce((acc, transaction) => acc + transaction.amount, 0);
-
-  const totalExpenses = transactions
-    .filter((transaction) => transaction.amount < 0)
-    .reduce((acc, transaction) => acc + Math.abs(transaction.amount), 0);
-
-  const remainingBudget = totalIncome - totalExpenses;
+  const totalIncome = transactions.reduce((acc, t) => t.amount > 0 ? acc + t.amount : acc, 0);
+  const totalExpenses = transactions.reduce((acc, t) => t.amount < 0 ? acc + t.amount : acc, 0);
 
   return (
-    <div className="container mx-auto p-4">
-      <Header />
-      <Dashboard totalIncome={totalIncome} totalExpenses={totalExpenses} remainingBudget={remainingBudget} />
-      <AddTransactionForm addTransaction={addTransaction} />
-      <TransactionList transactions={transactions} />
-    </div>
+    <Router>
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <div className="flex-grow container mx-auto p-4">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/dashboard" element={<Dashboard totalIncome={totalIncome} totalExpenses={totalExpenses} />} />
+            <Route path="/transactions" element={<TransactionList transactions={transactions} />} />
+            <Route path="/add" element={<AddTransactionForm addTransaction={addTransaction} />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </div>
+        <Footer /> 
+      </div>
+    </Router>
   );
 };
 

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import PropTypes from 'prop-types'; // Import PropTypes
+import PropTypes from 'prop-types';
 
 const AddTransactionForm = ({ addTransaction }) => {
   const [description, setDescription] = useState('');
@@ -26,7 +26,6 @@ const AddTransactionForm = ({ addTransaction }) => {
 
     addTransaction(newTransaction);
 
-    // Clear the form
     setDescription('');
     setAmount('');
     setDate('');
@@ -34,47 +33,46 @@ const AddTransactionForm = ({ addTransaction }) => {
   };
 
   return (
-    <form onSubmit={onSubmit} className="my-6">
-      <h2 className="text-lg font-bold mb-4">Add New Transaction</h2>
-      <div className="grid grid-cols-2 gap-4">
+    <form onSubmit={onSubmit} className="bg-white p-6 rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold mb-4">Add New Transaction</h2>
+      <div className="space-y-4">
         <input
           type="text"
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="border p-2 rounded-lg"
+          className="w-full p-2 border border-gray-300 rounded-lg"
         />
         <input
           type="number"
           placeholder="Amount"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
-          className="border p-2 rounded-lg"
+          className="w-full p-2 border border-gray-300 rounded-lg"
         />
         <input
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-          className="border p-2 rounded-lg"
+          className="w-full p-2 border border-gray-300 rounded-lg"
         />
         <input
           type="text"
           placeholder="Category"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="border p-2 rounded-lg"
+          className="w-full p-2 border border-gray-300 rounded-lg"
         />
       </div>
-      <button type="submit" className="bg-blue-500 text-white p-2 rounded-lg mt-4">
+      <button type="submit" className="mt-4 w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600">
         Add Transaction
       </button>
     </form>
   );
 };
 
-// Define prop types for validation
 AddTransactionForm.propTypes = {
-  addTransaction: PropTypes.func.isRequired, // Validate addTransaction prop
+  addTransaction: PropTypes.func.isRequired,
 };
 
 export default AddTransactionForm;
