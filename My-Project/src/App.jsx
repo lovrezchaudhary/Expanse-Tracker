@@ -1,18 +1,35 @@
-// import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
+import Header from './components/Header';
+import Dashboard from './components/Dashboard';
+import TransactionList from './components/TransactionList';
+import AddTransactionForm from './components/AddTransactionForm';
 
-function App() {
-  // const [count, setCount] = useState(0)
+const App = () => {
+  const [transactions, setTransactions] = useState([]);
+
+  const addTransaction = (transaction) => {
+    setTransactions([transaction, ...transactions]);
+  };
+
+  const totalIncome = transactions
+    .filter((transaction) => transaction.amount > 0)
+    .reduce((acc, transaction) => acc + transaction.amount, 0);
+
+  const totalExpenses = transactions
+    .filter((transaction) => transaction.amount < 0)
+    .reduce((acc, transaction) => acc + Math.abs(transaction.amount), 0);
+
+  const remainingBudget = totalIncome - totalExpenses;
 
   return (
-    <div className='bg-gray-800 w-full h-screen flex items-center justify-center flex-wrap'>
-      <img src={reactLogo} alt="" />
-      <img src={viteLogo} alt="" />
-      <h1 className="text-gray-300 text-4xl font-bold">Hello My Project</h1>
+    <div className="container mx-auto p-4">
+      <Header />
+      <Dashboard totalIncome={totalIncome} totalExpenses={totalExpenses} remainingBudget={remainingBudget} />
+      <AddTransactionForm addTransaction={addTransaction} />
+      <TransactionList transactions={transactions} />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
