@@ -6,12 +6,11 @@ const AddTransactionForm = ({ addTransaction }) => {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
-  const [category, setCategory] = useState('');
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (!description || !amount || !date || !category) {
+    if (!description || !amount || !date ) {
       alert('Please fill out all fields');
       return;
     }
@@ -21,7 +20,6 @@ const AddTransactionForm = ({ addTransaction }) => {
       description,
       amount: parseFloat(amount),
       date,
-      category,
     };
 
     addTransaction(newTransaction);
@@ -29,45 +27,73 @@ const AddTransactionForm = ({ addTransaction }) => {
     setDescription('');
     setAmount('');
     setDate('');
-    setCategory('');
   };
 
   return (
-    <form onSubmit={onSubmit} className="bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Add New Transaction</h2>
-      <div className="space-y-4">
-        <input
-          type="text"
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-lg"
-        />
-        <input
-          type="number"
-          placeholder="Amount"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-lg"
-        />
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-lg"
-        />
-        <input
-          type="text"
-          placeholder="Category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-lg"
-        />
+    <div className="min-h-screen bg-[#E1D7B7] flex flex-col items-center justify-center">
+      <div className="w-4/5 max-w-md bg-white bg-opacity-20 border border-gray-300 rounded-lg p-8 shadow-lg backdrop-blur-md">
+        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Add New Transaction</h2>
+        <form onSubmit={onSubmit} className="space-y-4">
+          <div>
+            <label
+              htmlFor="description"
+              className="block text-lg font-medium text-gray-700"
+            >
+              Description
+            </label>
+            <input
+              type="text"
+              id="description"
+              className="mt-2 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="amount"
+              className="block text-lg font-medium text-gray-700"
+            >
+              Amount
+            </label>
+            <input
+              type="number"
+              id="amount"
+              className="mt-2 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="date"
+              className="block text-lg font-medium text-gray-700"
+            >
+              Date
+            </label>
+            <input
+              type="date"
+              id="date"
+              className="mt-2 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white p-3 rounded-lg shadow-lg hover:bg-blue-700 transition duration-200"
+          >
+            Add Transaction
+          </button>
+        </form>
       </div>
-      <button type="submit" className="mt-4 w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600">
-        Add Transaction
-      </button>
-    </form>
+    </div>
   );
 };
 
