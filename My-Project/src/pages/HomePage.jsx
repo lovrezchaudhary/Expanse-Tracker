@@ -25,20 +25,71 @@ const HomePage = () => {
           Track your expenses and manage your budget efficiently with our easy-to-use expense tracker. 
           Start managing your finances today and gain insights into your spending habits.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+
+        {/* Replace Track Expenses, Set Budgets, and View Reports with Login and Signup */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mb-8">
+          {/* Login Container */}
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
-            <h2 className="text-xl font-semibold mb-2">Track Expenses</h2>
-            <p>Keep track of all your expenses and categorize them for better understanding.</p>
+            <h2 className="text-xl font-semibold mb-2">Login</h2>
+            <form className="flex flex-col">
+              <label className="mb-2" htmlFor="loginEmail">Email:</label>
+              <input
+                className="p-2 mb-4 rounded-md border border-gray-300 dark:bg-gray-700 dark:border-gray-600"
+                type="email"
+                id="loginEmail"
+                placeholder="Enter your email"
+              />
+              <label className="mb-2" htmlFor="loginPassword">Password:</label>
+              <input
+                className="p-2 mb-4 rounded-md border border-gray-300 dark:bg-gray-700 dark:border-gray-600"
+                type="password"
+                id="loginPassword"
+                placeholder="Enter your password"
+              />
+              <button
+                type="submit"
+                className="p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+              >
+                Login
+              </button>
+            </form>
           </div>
+
+          {/* Signup Container */}
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
-            <h2 className="text-xl font-semibold mb-2">Set Budgets</h2>
-            <p>Set and monitor your budget to ensure you stay within your limits.</p>
-          </div>
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
-            <h2 className="text-xl font-semibold mb-2">View Reports</h2>
-            <p>Generate reports and visualize your spending trends over time.</p>
+            <h2 className="text-xl font-semibold mb-2">Signup</h2>
+            <form className="flex flex-col">
+              <label className="mb-2" htmlFor="signupEmail">Email:</label>
+              <input
+                className="p-2 mb-4 rounded-md border border-gray-300 dark:bg-gray-700 dark:border-gray-600"
+                type="email"
+                id="signupEmail"
+                placeholder="Enter your email"
+              />
+              <label className="mb-2" htmlFor="signupPassword">Password:</label>
+              <input
+                className="p-2 mb-4 rounded-md border border-gray-300 dark:bg-gray-700 dark:border-gray-600"
+                type="password"
+                id="signupPassword"
+                placeholder="Enter your password"
+              />
+              <label className="mb-2" htmlFor="signupConfirmPassword">Confirm Password:</label>
+              <input
+                className="p-2 mb-4 rounded-md border border-gray-300 dark:bg-gray-700 dark:border-gray-600"
+                type="password"
+                id="signupConfirmPassword"
+                placeholder="Confirm your password"
+              />
+              <button
+                type="submit"
+                className="p-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors"
+              >
+                Signup
+              </button>
+            </form>
           </div>
         </div>
+
         <section className="bg-[#e0d09e] dark:bg-gray-800 p-6 mt-20 rounded-lg shadow-lg">
           <h2 className="text-2xl font-bold mb-4">How It Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

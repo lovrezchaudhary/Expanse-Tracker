@@ -13,7 +13,7 @@ const AboutPage = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             <h2 className="text-2xl font-semibold mb-2">Our Mission</h2>
             <p className="text-gray-700 dark:text-gray-300">
@@ -31,6 +31,50 @@ const AboutPage = () => {
               <li>User-friendly interface with dark mode support</li>
             </ul>
           </div>
+        </div>
+
+        {/* Contact Us Section */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
+          <p className="text-lg max-w-xl mx-auto mb-6">
+            Have any questions, feedback, or suggestions? Feel free to reach out to us. We are always here to help you manage your finances more effectively.
+          </p>
+
+          <form className="max-w-xl mx-auto">
+            <div className="mb-4">
+              <label className="block text-lg font-semibold mb-2" htmlFor="name">Name</label>
+              <input
+                className="w-full p-3 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600"
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-lg font-semibold mb-2" htmlFor="email">Email</label>
+              <input
+                className="w-full p-3 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600"
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+              />
+            </div>
+            <div className="mb-6">
+              <label className="block text-lg font-semibold mb-2" htmlFor="message">Message</label>
+              <textarea
+                className="w-full p-3 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600"
+                id="message"
+                rows="4"
+                placeholder="Enter your message"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+            >
+              Send Message
+            </button>
+          </form>
         </div>
       </div>
     </div>
