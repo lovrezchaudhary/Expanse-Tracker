@@ -26,7 +26,6 @@ const HomePage = () => {
           Start managing your finances today and gain insights into your spending habits.
         </p>
 
-        {/* Replace Track Expenses, Set Budgets, and View Reports with Login and Signup */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mb-8">
           {/* Login Container */}
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">

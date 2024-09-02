@@ -13,10 +13,9 @@ const Footer = () => {
         <div className="flex justify-center space-x-4 mb-4">
           <a href="#" className="hover:text-blue-400">Privacy Policy</a>
           <a href="#" className="hover:text-blue-400">Terms of Service</a>
-          <a href="#" className="hover:text-blue-400">Contact Us</a>
+          <a href="/about" className="hover:text-blue-400">Contact Us</a>
         </div>
-        <div className="text-sm">
-          
+        <div className="text-sm">  
           <div className="flex justify-center space-x-4 mt-2">
           <p>Follow us on :</p>
             <a href="#" className="hover:text-blue-400">Facebook</a>

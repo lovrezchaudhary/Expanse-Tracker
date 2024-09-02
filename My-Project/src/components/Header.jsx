@@ -6,10 +6,7 @@ const Header = () => {
   return (
     <header className="bg-[#2a375c] dark:bg-[#1E2A5E] text-gray-200 shadow-md">
       <div className="container mx-auto flex items-center justify-between p-4">
-        {/* Header Title */}
         <h1 className="text-2xl font-bold text-white">Expense Tracker</h1>
-        
-        {/* Navigation Links */}
         <nav>
           <ul className="flex space-x-4">
             <li>

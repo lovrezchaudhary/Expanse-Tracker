@@ -6,7 +6,6 @@ const Dashboard = ({ totalIncome, totalExpenses, transactions }) => {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    // Check if dark mode is enabled on the document and set the state accordingly
     const isDarkMode = document.documentElement.classList.contains('dark');
     setDarkMode(isDarkMode);
   }, []);

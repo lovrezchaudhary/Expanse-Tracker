@@ -9,7 +9,6 @@ const AddTransactionForm = ({ addTransaction }) => {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    // Check if dark mode is enabled on the document and set the state accordingly
     const isDarkMode = document.documentElement.classList.contains('dark');
     setDarkMode(isDarkMode);
   }, []);
@@ -42,12 +41,7 @@ const AddTransactionForm = ({ addTransaction }) => {
         <h2 className="text-3xl font-bold mb-6 text-center">Add New Transaction</h2>
         <form onSubmit={onSubmit} className="space-y-4">
           <div>
-            <label
-              htmlFor="description"
-              className="block text-lg font-medium"
-            >
-              Description
-            </label>
+            <label htmlFor="description" className="block text-lg font-medium"> Description </label>
             <input
               type="text"
               id="description"
@@ -59,12 +53,7 @@ const AddTransactionForm = ({ addTransaction }) => {
           </div>
 
           <div>
-            <label
-              htmlFor="amount"
-              className="block text-lg font-medium"
-            >
-              Amount
-            </label>
+            <label htmlFor="amount" className="block text-lg font-medium" > Amount </label>
             <input
               type="number"
               id="amount"
@@ -76,12 +65,7 @@ const AddTransactionForm = ({ addTransaction }) => {
           </div>
 
           <div>
-            <label
-              htmlFor="date"
-              className="block text-lg font-medium"
-            >
-              Date
-            </label>
+            <label htmlFor="date" className="block text-lg font-medium" > Date </label>
             <input
               type="date"
               id="date"
@@ -92,10 +76,7 @@ const AddTransactionForm = ({ addTransaction }) => {
             />
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white p-3 rounded-lg shadow-lg hover:bg-blue-700 transition duration-200"
-          >
+          <button type="submit" className="w-full bg-blue-600 text-white p-3 rounded-lg shadow-lg hover:bg-blue-700 transition duration-200" >
             Add Transaction
           </button>
         </form>
