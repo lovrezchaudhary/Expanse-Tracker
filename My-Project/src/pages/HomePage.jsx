@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { account } from './appwrite'; 
+import { account } from '../appwriteConfig'; 
 
 const HomePage = () => {
   const [darkMode, setDarkMode] = useState(false);
