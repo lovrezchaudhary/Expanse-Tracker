@@ -9,6 +9,9 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import NotFoundPage from './pages/NotFoundPage';
 import Footer from './components/Footer';
+import { Client } from 'appwrite';
+import { account } from './appwriteConfig';
+
 
 const App = () => {
   const [transactions, setTransactions] = useState([]);

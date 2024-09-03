@@ -1,12 +1,47 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
+import { account } from './appwrite'; 
 
 const HomePage = () => {
   const [darkMode, setDarkMode] = useState(false);
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
+  const [signupEmail, setSignupEmail] = useState('');
+  const [signupPassword, setSignupPassword] = useState('');
+  const [signupConfirmPassword, setSignupConfirmPassword] = useState('');
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
     document.documentElement.classList.toggle('dark', !darkMode);
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await account.createSession(loginEmail, loginPassword);
+      alert('Login successful!');
+      // Redirect to dashboard or another page
+    } catch (error) {
+      console.error('Login error:', error);
+      alert('Login failed. Please try again.');
+    }
+  };
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    if (signupPassword !== signupConfirmPassword) {
+      alert('Passwords do not match.');
+      return;
+    }
+    try {
+      await account.create(signupEmail, signupPassword);
+      alert('Signup successful!');
+      // Optionally log in the user after signup
+      await handleLogin();
+    } catch (error) {
+      console.error('Signup error:', error);
+      alert('Signup failed. Please try again.');
+    }
   };
 
   return (
@@ -30,20 +65,26 @@ const HomePage = () => {
           {/* Login Container */}
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
             <h2 className="text-xl font-semibold mb-2">Login</h2>
-            <form className="flex flex-col">
+            <form onSubmit={handleLogin} className="flex flex-col">
               <label className="mb-2" htmlFor="loginEmail">Email:</label>
               <input
                 className="p-2 mb-4 rounded-md border border-gray-300 dark:bg-gray-700 dark:border-gray-600"
                 type="email"
                 id="loginEmail"
+                value={loginEmail}
+                onChange={(e) => setLoginEmail(e.target.value)}
                 placeholder="Enter your email"
+                required
               />
               <label className="mb-2" htmlFor="loginPassword">Password:</label>
               <input
                 className="p-2 mb-4 rounded-md border border-gray-300 dark:bg-gray-700 dark:border-gray-600"
                 type="password"
                 id="loginPassword"
+                value={loginPassword}
+                onChange={(e) => setLoginPassword(e.target.value)}
                 placeholder="Enter your password"
+                required
               />
               <button
                 type="submit"
@@ -57,27 +98,36 @@ const HomePage = () => {
           {/* Signup Container */}
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
             <h2 className="text-xl font-semibold mb-2">Signup</h2>
-            <form className="flex flex-col">
+            <form onSubmit={handleSignup} className="flex flex-col">
               <label className="mb-2" htmlFor="signupEmail">Email:</label>
               <input
                 className="p-2 mb-4 rounded-md border border-gray-300 dark:bg-gray-700 dark:border-gray-600"
                 type="email"
                 id="signupEmail"
+                value={signupEmail}
+                onChange={(e) => setSignupEmail(e.target.value)}
                 placeholder="Enter your email"
+                required
               />
               <label className="mb-2" htmlFor="signupPassword">Password:</label>
               <input
                 className="p-2 mb-4 rounded-md border border-gray-300 dark:bg-gray-700 dark:border-gray-600"
                 type="password"
                 id="signupPassword"
+                value={signupPassword}
+                onChange={(e) => setSignupPassword(e.target.value)}
                 placeholder="Enter your password"
+                required
               />
               <label className="mb-2" htmlFor="signupConfirmPassword">Confirm Password:</label>
               <input
                 className="p-2 mb-4 rounded-md border border-gray-300 dark:bg-gray-700 dark:border-gray-600"
                 type="password"
                 id="signupConfirmPassword"
+                value={signupConfirmPassword}
+                onChange={(e) => setSignupConfirmPassword(e.target.value)}
                 placeholder="Confirm your password"
+                required
               />
               <button
                 type="submit"
