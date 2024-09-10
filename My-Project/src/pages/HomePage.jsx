@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { account } from '../appwriteConfig'; 
 
 const HomePage = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -15,33 +14,18 @@ const HomePage = () => {
     document.documentElement.classList.toggle('dark', !darkMode);
   };
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    try {
-      await account.createSession(loginEmail, loginPassword);
-      alert('Login successful!');
-      // Redirect to dashboard or another page
-    } catch (error) {
-      console.error('Login error:', error);
-      alert('Login failed. Please try again.');
-    }
+    alert(`Login attempted with Email: ${loginEmail} and Password: ${loginPassword}`);
   };
 
-  const handleSignup = async (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
     if (signupPassword !== signupConfirmPassword) {
       alert('Passwords do not match.');
       return;
     }
-    try {
-      await account.create(signupEmail, signupPassword);
-      alert('Signup successful!');
-      // Optionally log in the user after signup
-      await handleLogin();
-    } catch (error) {
-      console.error('Signup error:', error);
-      alert('Signup failed. Please try again.');
-    }
+    alert(`Signup attempted with Email: ${signupEmail}`);
   };
 
   return (
