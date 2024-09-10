@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { databases } from '../appwriteConfig';
 
 const AddTransactionForm = ({ addTransaction }) => {
   const [description, setDescription] = useState('');
@@ -54,7 +53,7 @@ const AddTransactionForm = ({ addTransaction }) => {
           </div>
 
           <div>
-            <label htmlFor="amount" className="block text-lg font-medium" > Amount </label>
+            <label htmlFor="amount" className="block text-lg font-medium"> Amount </label>
             <input
               type="number"
               id="amount"
@@ -66,7 +65,7 @@ const AddTransactionForm = ({ addTransaction }) => {
           </div>
 
           <div>
-            <label htmlFor="date" className="block text-lg font-medium" > Date </label>
+            <label htmlFor="date" className="block text-lg font-medium"> Date </label>
             <input
               type="date"
               id="date"
@@ -77,7 +76,7 @@ const AddTransactionForm = ({ addTransaction }) => {
             />
           </div>
 
-          <button type="submit" className="w-full bg-blue-600 text-white p-3 rounded-lg shadow-lg hover:bg-blue-700 transition duration-200" >
+          <button type="submit" className="w-full bg-blue-600 text-white p-3 rounded-lg shadow-lg hover:bg-blue-700 transition duration-200">
             Add Transaction
           </button>
         </form>
