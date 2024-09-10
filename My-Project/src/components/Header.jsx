@@ -1,17 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import PropTypes from 'prop-types'; // Import PropTypes
+import PropTypes from 'prop-types'; 
 import { Link } from 'react-router-dom';
-import { account } from '../appwriteConfig';
 
 const Header = ({ user, setUser }) => {
-  const handleLogout = async () => {
-    try {
-      await account.deleteSession('current');
-      setUser(null);
-    } catch (error) {
-      console.error('Logout error:', error);
-    }
+  const handleLogout = () => {
+    setUser(null);
   };
 
   return (
@@ -20,7 +14,7 @@ const Header = ({ user, setUser }) => {
         <h1 className="text-xl font-bold">Expense Tracker</h1>
         <nav>
           <Link to="/" className="mr-4">Home</Link>
-          <Link to="/About" className="mr-4">About</Link>
+          <Link to="/about" className="mr-4">About</Link>
           <Link to="/dashboard" className="mr-4">Dashboard</Link>
           <Link to="/transactions" className="mr-4">Transactions</Link>
           <Link to="/add" className="mr-4">Add Transaction</Link>
@@ -38,7 +32,6 @@ const Header = ({ user, setUser }) => {
   );
 };
 
-// Define PropTypes for the Header component
 Header.propTypes = {
   user: PropTypes.object,
   setUser: PropTypes.func.isRequired,
